@@ -1,7 +1,6 @@
 "use client"
 
 // 'nodejs' (default) | 'edge'
-
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 
@@ -48,11 +47,15 @@ const DogPage: React.FC = () => {
   }
 
   return (
-    <section className="container grid items-center">
+    <section className="container grid items-center px-0">
       <div className="flex pt-8" style={{ marginLeft: "34px" }}>
-        <BreadcrumbDefault capitalizeLinks={true} homeElement={undefined} separator={undefined} />
+        <BreadcrumbDefault
+          capitalizeLinks={true}
+          homeElement={undefined}
+          separator={undefined}
+        />
       </div>
-      <section className="container grid items-center gap-6 pb-8 pt-4 md:py-8">
+      <section className="container grid items-center gap-0 py-0 pb-8 pt-4">
         <DogCard item={dog} />
       </section>
     </section>

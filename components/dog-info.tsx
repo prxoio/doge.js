@@ -23,28 +23,37 @@ export function DogCard({ item }: { item: Dog }) {
 
   return (
     <Card>
-      <CardHeader style={{ display: "flex", justifyContent: "space-between" }}>
+      <CardHeader
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          paddingBottom: "1rem",
+        }}
+      >
         <div>
           <CardTitle className="card-title">{item.id}</CardTitle>
         </div>
         {/* Render the badges in a horizontal row */}
-        <div style={{ display: "flex" }}>
-          <Badge style={{ marginRight: "8px" }}>{item.demeanor_category}</Badge>
+        <div style={{ display: "flex", flexWrap: "wrap", marginTop: "0.5rem" }}>
+          <Badge style={{ marginRight: "8px", marginBottom: "8px" }}>
+            {item.demeanor_category}
+          </Badge>
 
           {temperaments.map((temperament, index) => (
             <Badge
               variant="secondary"
               key={index}
-              style={{ marginRight: "8px" }}
+              style={{ marginRight: "8px", marginBottom: "8px" }}
             >
               {temperament}
             </Badge>
           ))}
         </div>
-        <CardDescription className="pt-5">{item.description}</CardDescription>
+        <CardDescription className="py-5">{item.description}</CardDescription>
       </CardHeader>
       <CardContent>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
           <DogStat
             item={item}
             title={"Popularity"}

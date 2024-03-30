@@ -5,6 +5,7 @@ import { Readable } from 'stream'; // Import the Readable class
 
 export default async function fetchDogData(dogId: string): Promise<Dog | null> {
   console.log("Parsing CSV data for every request...");
+  const formattedDogId = dogId.replace(/-/g, ' ');
 
   const data = await fs.readFile(process.cwd() + '/data/dogs.csv', 'utf8');
   const dogs: Dog[] = [];
@@ -16,7 +17,7 @@ export default async function fetchDogData(dogId: string): Promise<Dog | null> {
     readableStream
       .pipe(csv())
       .on('data', (row: Dog) => {
-        if (row.id === dogId) {
+        if (row.id === formattedDogId) {
           dogs.push(row);
         }
       })
