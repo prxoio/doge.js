@@ -27,7 +27,7 @@ const DogPage: React.FC = () => {
       console.log("fetching dog data for id:", id)
 
       try {
-        const response = await fetch(`/api/dogs/${id}`)
+        const response = await fetch(`/api/dogs?id=${id}`)
         if (!response.ok) {
           throw new Error("Dog data fetch failed")
         }
