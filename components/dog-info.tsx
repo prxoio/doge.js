@@ -1,4 +1,5 @@
 import * as React from "react"
+import { FaDog } from "react-icons/fa"
 import type { Dog } from "types/dog"
 
 import { Badge } from "@/components/ui/badge"
@@ -21,6 +22,22 @@ import { DogStat } from "./stats/dog-rating"
 export function DogCard({ item }: { item: Dog }) {
   const temperaments: string[] = item.temperament.split(", ")
 
+  function getPopularityNote(popularity: number, maxScore: number): string {
+    const proportion = (popularity / maxScore) * 100 // Calculate the proportion of maxScore
+
+    if (proportion <= 20) {
+      return "Very low"
+    } else if (proportion > 20 && proportion <= 35) {
+      return "Low"
+    } else if (proportion > 35 && proportion <= 60) {
+      return "Medium"
+    } else if (proportion > 60 && proportion <= 79) {
+      return "High"
+    } else {
+      return "Very high"
+    }
+  }
+
   return (
     <Card>
       <CardHeader
@@ -32,7 +49,10 @@ export function DogCard({ item }: { item: Dog }) {
         }}
       >
         <div>
-          <CardTitle className="card-title">{item.id}</CardTitle>
+          <CardTitle className="card-title flex">
+            <FaDog className="mr-4" />
+            {item.id}
+          </CardTitle>
         </div>
         {/* Render the badges in a horizontal row */}
         <div style={{ display: "flex", flexWrap: "wrap", marginTop: "0.5rem" }}>
@@ -60,7 +80,7 @@ export function DogCard({ item }: { item: Dog }) {
             tooltip={"Statistic based on annual dog registrations in USA"}
             rating={item.popularity}
             ratingMax={195}
-            note="+"
+            note={getPopularityNote(item.popularity, 195) + " popularity"}
           />
           <DogStat
             item={item}
