@@ -1,13 +1,19 @@
 // app/api/items/[id].ts
 import { NextRequest, NextResponse } from 'next/server';
-import items from './data.json';
-
+import items from '../data.json';
 
 // Example of a GET request handler
 export async function GET(req: NextRequest) {
-  const id = req.nextUrl.searchParams.get('id');
-  console.log("Searching for ID:", id);
+  let id = req.nextUrl.searchParams.get('id');
+  
+  console.log("Original ID:", id);
 
+  // Replace any '-' in the id string with a space
+  if (id) {
+    id = id.replace(/-/g, ' ');
+  }
+
+  console.log("Modified ID:", id);
 
   // Search for the item with the matching 'id'
   const item = items.find((item: { id: string }) => item.id === id);
