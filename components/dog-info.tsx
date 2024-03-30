@@ -44,7 +44,7 @@ export function DogCard({ item }: { item: Dog }) {
         <CardDescription className="pt-5">{item.description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
           <DogStat
             item={item}
             title={"Popularity"}
@@ -78,7 +78,7 @@ export function DogCard({ item }: { item: Dog }) {
             frequency={item.grooming_frequency_category}
           />
         </div>
-        <div className="mt-6 grid grid-cols-4 gap-6">
+        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4">
           <DogGrooming
             item={item}
             title={"Shedding"}
