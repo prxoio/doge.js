@@ -12,6 +12,10 @@ export const siteConfig = {
   { 
     title: "Breeds",
     href: "/breeds",
+  },
+  {
+    title: "API Docs",
+    href: "https://github.com/prxoio/doge.js?tab=readme-ov-file#dog-breeds-api-documentation",
   }
   ],
   links: {
