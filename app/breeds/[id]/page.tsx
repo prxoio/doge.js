@@ -55,7 +55,7 @@ const DogPage: React.FC = () => {
           separator={undefined}
         />
       </div>
-      <section className="container grid items-center gap-0 py-0 pb-8 pt-4">
+      <section className="ml-0 grid items-center gap-0 px-2 pb-8 pt-4">
         <DogCard item={dog} />
       </section>
     </section>
