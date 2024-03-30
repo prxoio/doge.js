@@ -3,23 +3,11 @@
 import { useCallback, useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { FaDog } from "react-icons/fa"
 
-import { Button } from "@/components/ui/button"
-import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/components/ui/command"
 // Import Link from next/link
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { FaDog } from "react-icons/fa"
 
 const BreedsPage = () => {
   const [ids, setIds] = useState<string[]>([])
@@ -38,22 +26,18 @@ const BreedsPage = () => {
   }, [])
 
   return (
-
-  
     <div className="flex min-h-screen flex-col">
-      
       {/* Search bar container */}
       <div className="p-4">
         <div className="mx-auto mt-10 w-full max-w-md">
-        <div className="mb-10 flex max-w-[980px] flex-col items-start gap-2">
-
-        <h1 className="flex text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-        <FaDog className="mr-3" /> Search For Dog Breeds
-        </h1>
-        <p className="max-w-[700px] text-sm text-muted-foreground">
-          Search for dog breeds by name using the search bar below.
-        </p>
-      </div>
+          <div className="mb-10 flex max-w-[980px] flex-col items-start gap-2">
+            <h1 className="flex text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
+              <FaDog className="mr-3" /> Search For Dog Breeds
+            </h1>
+            <p className="max-w-[700px] text-sm text-muted-foreground">
+              Search for dog breeds by name using the search bar below.
+            </p>
+          </div>
           <Input
             type="text"
             placeholder="Search dog breeds..."
@@ -66,18 +50,22 @@ const BreedsPage = () => {
       <div className="flex-1 overflow-auto p-4">
         <div className="mx-auto w-full max-w-md px-3">
           <ul>
-            {ids.filter(id => id.toLowerCase().includes(searchQuery.toLowerCase())).map(id => (
-              <li key={id} className="text-sm">
-                <Link href={`/breeds/${id.replace(/\s+/g, "-")}`}>
-                  <a>{id}</a> {/* Make the ID clickable */}
-                </Link>
-                <Separator className="my-2" />
-              </li>
-            ))}
+            {ids
+              .filter((id) =>
+                id.toLowerCase().includes(searchQuery.toLowerCase())
+              )
+              .map((id) => (
+                <li key={id} className="text-sm">
+                  <Link href={`/breeds/${id.replace(/\s+/g, "-")}`}>
+                    <a>{id}</a> {/* Make the ID clickable */}
+                  </Link>
+                  <Separator className="my-2" />
+                </li>
+              ))}
           </ul>
         </div>
       </div>
     </div>
-  );
+  )
 }
 export default BreedsPage

@@ -1,21 +1,20 @@
 // app/api/breeds/index.ts
-import { NextRequest, NextResponse } from 'next/server';
-import dogs from '../data.json';
+import { NextRequest, NextResponse } from "next/server"
 
-// Cache variable
-let cachedData: string | null = null;
+import dogs from "../data.json"
+
+let cachedData: string | null = null
 
 export async function GET() {
   if (!cachedData) {
-    // Assuming `dogs` is an array of objects from the JSON file
-    const ids = dogs.map(dog => dog.id);
-    cachedData = JSON.stringify(ids);
+    const ids = dogs.map((dog) => dog.id)
+    cachedData = JSON.stringify(ids)
   }
-  
+
   return new NextResponse(cachedData, {
     status: 200,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-  });
+  })
 }

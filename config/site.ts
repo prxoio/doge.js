@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig
 export const siteConfig = {
   name: "doge.js",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Repository of dog breeds.",
   mainNav: [
     {
       title: "Home",
@@ -15,8 +15,9 @@ export const siteConfig = {
   }
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    twitter: "https://inv3nt.dev",
+    github: "https://github.com/prxoio",
+    docs: "https://inv3nt.dev",
   },
 }
+ 
