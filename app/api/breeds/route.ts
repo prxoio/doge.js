@@ -1,13 +1,13 @@
 // app/api/breeds/index.ts
 import { NextRequest, NextResponse } from 'next/server';
-import parseCsv from 'lib/parseCsv';
+import dogs from '../data.json';
 
 // Cache variable
 let cachedData: string | null = null;
 
 export async function GET() {
   if (!cachedData) {
-    const dogs = await parseCsv('data/dogs.csv');
+    // Assuming `dogs` is an array of objects from the JSON file
     const ids = dogs.map(dog => dog.id);
     cachedData = JSON.stringify(ids);
   }
