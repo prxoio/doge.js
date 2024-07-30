@@ -20,7 +20,7 @@ export const siteConfig = {
   ],
   links: {
     twitter: "https://inv3nt.dev",
-    github: "https://github.com/prxoio",
+    github: "https://github.com/prxoio/doge.js",
     docs: "https://inv3nt.dev",
   },
 }
